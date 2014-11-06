@@ -1,8 +1,7 @@
 ﻿using Owin;
 
-namespace SignalRDemo.App_Start
+namespace SignalRDemo
 {
-
     public class Startup
     {
         public void Configuration(IAppBuilder app)

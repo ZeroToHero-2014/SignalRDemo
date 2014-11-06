@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+<script src="Scripts/jquery-1.10.2.min.js"></script>
+<script src="Scripts/jquery.signalR-2.0.2.min.js"></script>
+<script src="/signalr/js"></script>
+<script>
+    $(function() {
+        var hub = $.connection.hub;
+        hub.start()
+            .done(function () { alert("da"); })
+            .fail(function () { alert("nu"); });
+    });    
+</script>
+</body>
+</html>
