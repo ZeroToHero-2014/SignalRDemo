@@ -4,9 +4,9 @@ namespace SignalRDemo
 {
     public class ChatHub : Hub
     {
-        public void Hello()
+        public void SendHello(string what)
         {
-            Clients.All.hello();
+            Clients.All.ReceiveHello("someone said " + what);
         }
     }
 }

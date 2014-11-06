@@ -11,8 +11,15 @@
 <script>
     $(function() {
         var hub = $.connection.hub;
+        var chat = $.connection.chatHub;
+        chat.client.ReceiveHello = function (what) {
+            alert(what);
+        };
+
         hub.start()
-            .done(function () { alert("da"); })
+            .done(function() {
+                chat.server.sendHello("cucu");
+            })
             .fail(function () { alert("nu"); });
     });    
 </script>
