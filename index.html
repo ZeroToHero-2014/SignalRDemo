@@ -4,24 +4,33 @@
     <title></title>
 </head>
 <body>
-
+    <input type="text" required id="who"/>
+    <input type="text" id="what"/>
+    <input type="button" id="send"/>
+    <div id="messages"></div>
 <script src="Scripts/jquery-1.10.2.min.js"></script>
 <script src="Scripts/jquery.signalR-2.0.2.min.js"></script>
 <script src="/signalr/js"></script>
 <script>
     $(function() {
+        $("#send").click(function() {
+            var chat = $.connection.chatHub;
+            chat.server.send({
+                who: $("#who").val(),
+                what: $("#what").val()
+            });
+        });
+    });
+    $(function() {
         var hub = $.connection.hub;
         var chat = $.connection.chatHub;
-        chat.client.ReceiveHello = function (what) {
-            alert(what);
+        chat.client.receive = function(message) {
+            $("#messages").append("<p>" + message + "</p>");
         };
 
         hub.start()
-            .done(function() {
-                chat.server.sendHello("cucu");
-            })
-            .fail(function () { alert("nu"); });
-    });    
+            .fail(function() { alert("nu"); });
+    });
 </script>
 </body>
 </html>
