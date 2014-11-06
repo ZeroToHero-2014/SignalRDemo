@@ -6,7 +6,7 @@
 <body>
     <input type="text" required id="who"/>
     <input type="text" id="what"/>
-    <input type="button" id="send"/>
+    <input type="button" id="send" value="Trimite"/>
     <div id="messages"></div>
 <script src="Scripts/jquery-1.10.2.min.js"></script>
 <script src="Scripts/jquery.signalR-2.0.2.min.js"></script>
@@ -19,6 +19,7 @@
                 who: $("#who").val(),
                 what: $("#what").val()
             });
+            what: $("#what").val("");
         });
     });
     $(function() {
